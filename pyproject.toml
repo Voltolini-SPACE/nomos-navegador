@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nomos-navegador"
+version = "1.0.0"
+description = "NOMOS Navegador — navegação governada: abrir, extrair, preencher e evidenciar páginas, sem tocar no navegador em uso"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Voltolini-SPACE" }]
+readme = "README.md"
+keywords = ["nomos", "navegador", "playwright", "automacao", "evidencia"]
+dependencies = []                       # o navegador é opcional: extra [browser]
+
+[project.optional-dependencies]
+browser = ["playwright>=1.40"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.urls]
+Homepage = "https://github.com/Voltolini-SPACE/nomos-navegador"
+
+[project.scripts]
+nomos-navegador = "nomos_navegador.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B", "S110"]
+ignore = ["E731"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
